@@ -1,12 +1,11 @@
 package org.example
 
-import kotlin.test.Ignore
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
 class AcceptanceTest {
-    @Test @Ignore
+    @Test
     fun addSomeItemsRemovesOneAndListsPrices() {
         testShoppingBasket { basket ->
             basket.addSomeItems()
@@ -25,7 +24,7 @@ class AcceptanceTest {
                 Amount          £12.60
                 
                 Sub-total       £11.73
-                VAT             £ 0.87
+                VAT             £0.87
                 Balance         £12.60
                 """.trimIndent(),
                 basket.listPrices(),
