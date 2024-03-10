@@ -20,10 +20,11 @@ class TestShoppingBasket {
 
     @Test
     fun removeItems() {
-        val basket = ShoppingBasket()
-        val apple = Item("apple", 0.2)
+        val basket =
+            ShoppingBasket(
+                listOf(Item("apple", 0.2)),
+            )
 
-        basket.addItem(apple)
         assertTrue(basket.items.size == 1, "there should be an apple in the basket")
 
         basket.removeItem("apple")

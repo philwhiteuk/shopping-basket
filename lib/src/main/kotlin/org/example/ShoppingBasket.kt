@@ -1,7 +1,8 @@
 package org.example
 
-class ShoppingBasket {
-    private val _items: MutableList<Item> = mutableListOf()
+class ShoppingBasket(items: List<Item> = listOf()) {
+    private val _items: MutableList<Item> = items.toMutableList()
+
     val items: List<Item>
         get() {
             return _items
