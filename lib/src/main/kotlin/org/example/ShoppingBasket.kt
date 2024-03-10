@@ -1,5 +1,7 @@
 package org.example
 
+import java.text.DecimalFormat
+
 class ShoppingBasket(items: List<Item> = listOf()) {
     private val _items: MutableList<Item> = items.toMutableList()
 
@@ -17,7 +19,8 @@ class ShoppingBasket(items: List<Item> = listOf()) {
     }
 
     fun printItems(): String {
-        TODO("Not yet implemented")
+        val numberFormatter = DecimalFormat("£0.00")
+        return _items.joinToString("\n") { item -> "${item.name.padEnd(16)}${numberFormatter.format(item.price)}" }
     }
 
     fun printBreakdown(): String {

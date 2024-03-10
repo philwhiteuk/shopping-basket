@@ -2,6 +2,7 @@ package org.example
 
 import kotlin.test.Test
 import kotlin.test.assertContains
+import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
 class TestShoppingBasket {
@@ -29,5 +30,24 @@ class TestShoppingBasket {
 
         basket.removeItem("apple")
         assertTrue(basket.items.isEmpty(), "there should be nothing left in the basket")
+    }
+
+    @Test
+    fun printItems() {
+        val basket =
+            ShoppingBasket(
+                listOf(
+                    Item("apple", 0.2),
+                    Item("orange", 0.5),
+                ),
+            )
+
+        assertEquals(
+            """
+            apple           £0.20
+            orange          £0.50
+            """.trimIndent(),
+            basket.printItems(),
+        )
     }
 }
