@@ -12,7 +12,7 @@ class ShoppingBasket {
     }
 
     fun removeItem(name: String) {
-        TODO("Not yet implemented")
+        _items.removeIf { item -> item.name == name }
     }
 
     fun printItems(): String {

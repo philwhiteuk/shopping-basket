@@ -17,4 +17,16 @@ class TestShoppingBasket {
         basket.addItem(orange)
         assertContains(basket.items, orange, "there should be an orange in the basket")
     }
+
+    @Test
+    fun removeItems() {
+        val basket = ShoppingBasket()
+        val apple = Item("apple", 0.2)
+
+        basket.addItem(apple)
+        assertTrue(basket.items.size == 1, "there should be an apple in the basket")
+
+        basket.removeItem("apple")
+        assertTrue(basket.items.isEmpty(), "there should be nothing left in the basket")
+    }
 }
