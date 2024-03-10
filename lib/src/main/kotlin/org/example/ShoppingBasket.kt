@@ -18,12 +18,20 @@ class ShoppingBasket(items: List<Item> = listOf()) {
         _items.removeIf { item -> item.name == name }
     }
 
+    private val numberFormatter = DecimalFormat("£0.00")
+
     fun printItems(): String {
-        val numberFormatter = DecimalFormat("£0.00")
         return _items.joinToString("\n") { item -> "${item.name.padEnd(16)}${numberFormatter.format(item.price)}" }
     }
 
     fun printBreakdown(): String {
-        TODO("Not yet implemented")
+        val sum = _items.map { item -> item.price }.reduce { sum, price -> sum + price }
+        return """
+            Amount          ${numberFormatter.format(sum)}
+            
+            Sub-total       ${numberFormatter.format(sum)}
+            VAT             £0.00
+            Balance         ${numberFormatter.format(sum)}
+            """.trimIndent()
     }
 }

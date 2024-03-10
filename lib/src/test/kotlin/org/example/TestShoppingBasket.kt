@@ -50,4 +50,26 @@ class TestShoppingBasket {
             basket.printItems(),
         )
     }
+
+    @Test
+    fun printBreakdownOfPrices() {
+        val basket =
+            ShoppingBasket(
+                listOf(
+                    Item("apple", 0.2),
+                    Item("orange", 0.5),
+                ),
+            )
+
+        assertEquals(
+            """
+            Amount          £0.70
+            
+            Sub-total       £0.70
+            VAT             £0.00
+            Balance         £0.70
+            """.trimIndent(),
+            basket.printBreakdown(),
+        )
+    }
 }
