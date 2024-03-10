@@ -1,13 +1,14 @@
 package org.example
 
 class ShoppingBasket {
+    private val _items: MutableList<Item> = mutableListOf()
     val items: List<Item>
         get() {
-            TODO()
+            return _items
         }
 
     fun addItem(item: Item) {
-        TODO("Not yet implemented")
+        _items.add(item)
     }
 
     fun removeItem(name: String) {
