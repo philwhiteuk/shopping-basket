@@ -26,11 +26,17 @@ class ShoppingBasket(items: List<Item> = listOf()) {
 
     fun printBreakdown(): String {
         val sum = _items.map { item -> item.price }.reduce { sum, price -> sum + price }
+        val tax =
+            _items
+                .map { item -> item.price - (item.price / (1 + (item.taxPct ?: 0.0))) }
+                .reduce { tax, price -> tax + price }
+        val exclTax = sum - tax
+
         return """
             Amount          ${numberFormatter.format(sum)}
             
-            Sub-total       ${numberFormatter.format(sum)}
-            VAT             £0.00
+            Sub-total       ${numberFormatter.format(exclTax)}
+            VAT             ${numberFormatter.format(tax)}
             Balance         ${numberFormatter.format(sum)}
             """.trimIndent()
     }

@@ -58,16 +58,17 @@ class TestShoppingBasket {
                 listOf(
                     Item("apple", 0.2),
                     Item("orange", 0.5),
+                    Item("cola can", 1.0, 0.2),
                 ),
             )
 
         assertEquals(
             """
-            Amount          £0.70
+            Amount          £1.70
             
-            Sub-total       £0.70
-            VAT             £0.00
-            Balance         £0.70
+            Sub-total       £1.53
+            VAT             £0.17
+            Balance         £1.70
             """.trimIndent(),
             basket.printBreakdown(),
         )
