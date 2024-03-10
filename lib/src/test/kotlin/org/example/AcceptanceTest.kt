@@ -34,6 +34,7 @@ class AcceptanceTest {
     }
 
     class TestShoppingBasket {
+        private val basket = ShoppingBasket()
         val groceryItems =
             mapOf(
                 "Bananas" to mapOf("price" to 3.5),
@@ -46,19 +47,27 @@ class AcceptanceTest {
             )
 
         fun addSomeItems() {
-            TODO("Not yet implemented")
+            groceryItems.entries.forEach { item ->
+                basket.addItem(Item(name = item.key, price = item.value["price"]!!, taxPct = item.value["taxPct"]))
+            }
         }
 
         fun itemCount(): Int {
-            TODO("Not yet implemented")
+            return basket.items.size
         }
 
         fun removeOne() {
-            TODO("Not yet implemented")
+            basket.removeItem("Bananas")
         }
 
         fun listPrices(): String {
-            TODO("Not yet implemented")
+            val line = "----------------------"
+            return """
+                |$line
+                |${basket.printItems()}
+                |$line
+                |${basket.printBreakdown()}
+                """.trimMargin()
         }
     }
 
